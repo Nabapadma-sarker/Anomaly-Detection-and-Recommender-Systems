@@ -27,7 +27,7 @@ Theta_grad = zeros(size(Theta));
 %               regularization.
 %
 % Notes: X - num_movies  x num_features matrix of movie features
-%        Theta - num_users  x num_features matrix of user features
+%        Theta -   x num_features matrix of user features
 %        Y - num_movies x num_users matrix of user ratings of movies
 %        R - num_movies x num_users matrix, where R(i, j) = 1 if the 
 %            i-th movie was rated by the j-th user
@@ -42,7 +42,7 @@ Theta_grad = zeros(size(Theta));
 
 
 
-
+J = (1/2)*(sum(Theta'X-Y).^2);
 
 
 
