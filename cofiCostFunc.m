@@ -42,11 +42,16 @@ Theta_grad = zeros(size(Theta));
 
 
 
-J = (1/2)*(sum(Theta'X-Y).^2);
+J = (1/2)*(sum(Theta'*X-Y).^2);
 
 
+X_grad = sum(Theta'*X-Y)*Theta;
+Theta_grad = sum(Theta'*X-Y)*X;
 
-
+idx = find(R(i, :)==1);
+Thetatemp = Theta(idx, :) ;
+Ytemp = Y(i, idx);
+Xgrad(i, :) = (X(i, :) ? ThetaTtemp ? Ytemp) ? Thetatemp;
 
 
 
