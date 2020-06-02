@@ -27,7 +27,7 @@ Theta_grad = zeros(size(Theta));
 %               regularization.
 %
 % Notes: X - num_movies  x num_features matrix of movie features
-%        Theta -   x num_features matrix of user features
+%        Theta -   um_features matrix of user features
 %        Y - num_movies x num_users matrix of user ratings of movies
 %        R - num_movies x num_users matrix, where R(i, j) = 1 if the 
 %            i-th movie was rated by the j-th user
@@ -42,21 +42,23 @@ Theta_grad = zeros(size(Theta));
 
 
 
-J = (1/2)*(sum(Theta'*X-Y).^2);
+#J = (1/2)*(sum(Theta'*X-Y).^2);
 
 
-X_grad = sum(Theta'*X-Y)*Theta;
-Theta_grad = sum(Theta'*X-Y)*X;
-
-idx = find(R(i, :)==1);
-Thetatemp = Theta(idx, :) ;
-Ytemp = Y(i, idx);
-Xgrad(i, :) = (X(i, :) ? ThetaTtemp ? Ytemp) ? Thetatemp;
-
-
-
-
-
+%for i = 1:size(num_movies,1)
+%  idx = find(R(i, :)==1);
+%  Thetatemp = Theta(idx, :) ;
+%  Ytemp = Y(i, idx);
+%  X_grad(i, :) = (X(i, :)*Thetatemp' - Ytemp)*Thetatemp;
+%end
+%
+%for i = 1:size(num_features,1)
+%  idx = find(R(i, :)==1);
+%  Thetatemp = Theta(idx, :) ;
+%  Xtemp = X(idx, :);
+%  Ytemp = Y(i, idx);
+%  Theta_grad(i, :) = (X(i, :)*Thetatemp' - Ytemp)*Xtemp;
+%end
 
 
 
