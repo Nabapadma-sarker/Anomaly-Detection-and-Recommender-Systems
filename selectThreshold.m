@@ -28,22 +28,20 @@ for epsilon = min(pval):stepsize:max(pval)
     cvPredictions = (pval < epsilon);
 
     fp = sum((cvPredictions == 1) & (yval == 0));
-    fn = sum((cvPredictions == 0) & (yval == 0));
+    fn = sum((cvPredictions == 0) & (yval == 1));
     tp = sum((cvPredictions == 1) & (yval == 1));
     if tp > 0
         prec = tp/(tp + fp);
         rec = tp/(tp + fn);
 
         F1 = (2*prec*rec)/(prec + rec);
-
-
-        % =============================================================
-
-        if F1 > bestF1
-           bestF1 = F1;
-           bestEpsilon = epsilon;
-        end
     end
+    % =============================================================
+
+    if F1 > bestF1
+       bestF1 = F1;
+       bestEpsilon = epsilon;
+    end    
 end
 
 end
